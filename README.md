@@ -1,4 +1,4 @@
-# moonlight_script_retropie (By TechWizTime - Addapted by me)
+# Moonlight Automatize Install (By TechWizTime - Addapted by me)
 
 A script to automate install Moonlight Embeddeg in Retropie for Raspberry.
 
