@@ -1,4 +1,4 @@
-# Moonlight Automatize Install (By TechWizTime - Addapted by me)
+# Moonlight Automatize Install <br>(By TechWizTime - Addapted by me)
 
 A script to automate install Moonlight Embeddeg in Retropie for Raspberry.
 
@@ -9,6 +9,14 @@ What this script does is update the source.list with the Moonlight installation 
 I used as a basis the TechWizTime script and added the features it has in the script to Recalbox which already creates the gamelist.xml and lowers the covers.
 
 I'm sorry for any bug, as I'm still noob in bash scripts.
+
+# Features
+- Automatize install moonlight process
+- Auto create Steam Menu in es_system.cfg
+- Auto create gamelist.xml based output 'moonlight list' command
+- Auto scrap games
+- launching.jpg image added on launch a game.
+- If press any button on loading a game, have choice option of Stream (1080p 60fps, 1080p 30fps, 720p 60fps, 720p 30fps).
 
 # Usage: 
 
