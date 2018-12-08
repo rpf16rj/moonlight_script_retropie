@@ -162,7 +162,7 @@ case $NUM in
 		#echo -e "Scrapping... please wait. Take a coffe."
 		
 		#GDBURL="http://thegamesdb.net/api/GetGame.php?platform=pc&exactname="
-	  #GAMELIST=/home/pi/RetroPie/roms/moonlight/gamelist.xml
+	  GAMELIST=/home/pi/RetroPie/roms/moonlight/gamelist.xml
 	  #IMGPATH=/home/pi/RetroPie/roms/moonlight/downloaded_images
 
 	  # Test if $GDBURL is online, and stop if it's offline
@@ -224,7 +224,7 @@ case $NUM in
   </game>
 EOF
 
-  rm "$xmlfilename"
+  #rm "$xmlfilename"
   done < gamesreal.txt
   
   
