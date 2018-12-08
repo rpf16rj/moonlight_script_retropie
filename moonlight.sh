@@ -46,7 +46,6 @@ case $NUM in
 		echo -e "**************************************\n"
 		apt-get install moonlight-embedded -y
 		echo -e "\nDONE!! Moonlight Embedded installed!\n"
-		cd /home/pi
 		./moonlight.sh
 	;;
 	2) echo -e "\n***************************************"
