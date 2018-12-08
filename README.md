@@ -24,9 +24,11 @@ I'm sorry for any bug, as I'm still noob in bash scripts.
 
 2 - Execute the commands:
 
-wget http://tudosobreraspberry.info/moonlight/moonlight.sh
+git clone https://github.com/rpf16rj/moonlight_script_retropie
 
-sudo chmod + x moonlight.sh
+cd moonlight_script_retropie
+
+sudo chmod +x moonlight.sh
 
 sudo ./moonlight.sh
 
