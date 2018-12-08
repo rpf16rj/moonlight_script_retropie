@@ -159,23 +159,25 @@ case $NUM in
 		
 		echo -e "Game menu created!"
 		
-		echo -e "Scrapping... please wait. Take a coffe."
+		echo -e "Skipping scrapping... api down!"
 		
-		GDBURL="http://thegamesdb.net/api/GetGame.php?platform=pc&exactname="
-	  GAMELIST=/home/pi/RetroPie/roms/moonlight/gamelist.xml
-	  IMGPATH=/home/pi/RetroPie/roms/moonlight/downloaded_images
+		#echo -e "Scrapping... please wait. Take a coffe."
+		
+		#GDBURL="http://thegamesdb.net/api/GetGame.php?platform=pc&exactname="
+	  #GAMELIST=/home/pi/RetroPie/roms/moonlight/gamelist.xml
+	  #IMGPATH=/home/pi/RetroPie/roms/moonlight/downloaded_images
 
 	  # Test if $GDBURL is online, and stop if it's offline
-	  dbdns=$(echo $GDBURL | awk -F/ '{print $3}')
-	  ping -c 1 $dbdns > /dev/null 2>&1
-	  if [ $? -ne '0' ]
-	  then
-    echo "$dbdns is not online. Can't scrape" >&2
-    exit
-  fi
+	  #dbdns=$(echo $GDBURL | awk -F/ '{print $3}')
+	  #ping -c 1 $dbdns > /dev/null 2>&1
+	  #if [ $? -ne '0' ]
+	  #then
+    #echo "$dbdns is not online. Can't scrape" >&2
+    #exit
+ # fi
 
   # Make sure the $IMGPATH exists
-  [ ! -d $IMGPATH ] && mkdir -p $IMGPATH
+ # [ ! -d $IMGPATH ] && mkdir -p $IMGPATH
 
 
   # This is what we were waiting for : generate the gamelist.xml
@@ -188,39 +190,39 @@ case $NUM in
     gamename=$line
 
     # download XML game data from TheGamesDB.net
-    wget "$GDBURL$gamename" -O "$xmlfilename" >/dev/null 2>&1
+    #wget "$GDBURL$gamename" -O "$xmlfilename" >/dev/null 2>&1
 
     # Time to get values for the gamelist.xml
-    id=$(xmlstarlet sel -t -v "Data/Game/id" "$xmlfilename" 2>/dev/null)
-    source="theGamesDB.net"
-    path="./${line}.txt"
-    desc=$(xmlstarlet sel -t -v "Data/Game/Overview" "$xmlfilename" 2>/dev/null)
+    #id=$(xmlstarlet sel -t -v "Data/Game/id" "$xmlfilename" 2>/dev/null)
+    #source="theGamesDB.net"
+    #path="./${line}.txt"
+    #desc=$(xmlstarlet sel -t -v "Data/Game/Overview" "$xmlfilename" 2>/dev/null)
 
     # A few steps to get the cover art url
-    imgurl=$(xmlstarlet sel -t -v "Data/baseImgUrl" -v "Data/Game/Images/boxart[@side='front']/@thumb" "$xmlfilename" 2>/dev/null)
-    extension=$(echo $imgurl | awk -F . '{print $NF}')
-    img="$IMGPATH/${gamename}.${extension}"
-    wget "$imgurl" -O "$img" >/dev/null 2>&1
+    #imgurl=$(xmlstarlet sel -t -v "Data/baseImgUrl" -v "Data/Game/Images/boxart[@side='front']/@thumb" "$xmlfilename" 2>/dev/null)
+    #extension=$(echo $imgurl | awk -F . '{print $NF}')
+    #img="$IMGPATH/${gamename}.${extension}"
+    #wget "$imgurl" -O "$img" >/dev/null 2>&1
 
-    rating=$(xmlstarlet sel -t -v "Data/Game/Rating" "$xmlfilename" 2>/dev/null)
-    releasedate=$(xmlstarlet sel -t -v "Data/Game/ReleaseDate" "$xmlfilename" 2>/dev/null | sed 's/^\([0-9]\{2\}\)\/\([0-9]\{2\}\)\/\([0-9]\{4\}\)/\3\1\2T0000/')
-    developer=$(xmlstarlet sel -t -v "Data/Game/Developer" "$xmlfilename" 2>/dev/null)
-    publisher=$(xmlstarlet sel -t -v "Data/Game/Publisher" "$xmlfilename" 2>/dev/null)
-    genre=$(xmlstarlet sel -T -t -m "Data/Game/Genres/genre" -v 'text()' -i 'not(position()=last())' -o ' / ' "$xmlfilename" 2>/dev/null)
-    players=$(xmlstarlet sel -t -v "Data/Game/Players" "$xmlfilename" 2>/dev/null)
+    #rating=$(xmlstarlet sel -t -v "Data/Game/Rating" "$xmlfilename" 2>/dev/null)
+    #releasedate=$(xmlstarlet sel -t -v "Data/Game/ReleaseDate" "$xmlfilename" 2>/dev/null | sed 's/^\([0-9]\{2\}\)\/\([0-9]\{2\}\)\/\([0-9]\{4\}\)/\3\1\2T0000/')
+    #developer=$(xmlstarlet sel -t -v "Data/Game/Developer" "$xmlfilename" 2>/dev/null)
+    #publisher=$(xmlstarlet sel -t -v "Data/Game/Publisher" "$xmlfilename" 2>/dev/null)
+    #genre=$(xmlstarlet sel -T -t -m "Data/Game/Genres/genre" -v 'text()' -i 'not(position()=last())' -o ' / ' "$xmlfilename" 2>/dev/null)
+    #players=$(xmlstarlet sel -t -v "Data/Game/Players" "$xmlfilename" 2>/dev/null)
     # Write the XML data
     cat << EOF >> $GAMELIST
   <game id="$id" source="$source">
     <path>$path</path>
     <name>$gamename</name>
-    <desc>$desc</desc>
-    <image>./downloaded_images/${gamename}.${extension}</image>
-    <rating>$rating</rating>
-    <releasedate>$releasedate</releasedate>
-    <developer>$developer</developer>
-    <publisher>$publisher</publisher>
-    <genre>$genre</genre>
-    <players>$players</players>
+    #<desc>$desc</desc>
+    #<image>./downloaded_images/${gamename}.${extension}</image>
+    #<rating>$rating</rating>
+    #<releasedate>$releasedate</releasedate>
+    #<developer>$developer</developer>
+    #<publisher>$publisher</publisher>
+    #<genre>$genre</genre>
+    #<players>$players</players>
   </game>
 EOF
 
