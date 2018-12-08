@@ -128,7 +128,6 @@ case $NUM in
 		echo -e "INSTALL and SETUP Script for Moonlight completed"
 		echo -e "************************************************\n\n\n"
 		echo -e "\nDONE!!\n"
-		cd /home/pi
 		./moonlight.sh
 	;;
 	3) echo -e "\n**************************************************"
@@ -234,7 +233,6 @@ EOF
 		echo -e "\n\n\n************************************************"
 		echo -e "Games Menu Creation completed"
 		echo -e "************************************************\n\n\n"
-		cd /home/pi
 		./moonlight.sh
 	;;
 	4) 	echo -e "\nRestart Retropie to apply changes Moonlight\n"
@@ -242,8 +240,7 @@ EOF
 		read -p "Restart now? (y/n)?" choice
 		case "$choice" in 
 		  y|Y ) reboot;;
-		  n|N ) cd /home/pi
-		  ./moonlight.sh
+		  n|N ) ./moonlight.sh
 		  ;;
 		  * ) echo "invalid";;
 		  esac
@@ -257,7 +254,6 @@ EOF
 		echo -e "\n\n\n************************************************"
 		echo -e "Unpair completed"
 		echo -e "************************************************\n\n\n"
-		cd /home/pi
 		./moonlight.sh
 	;;
 	6) 
@@ -275,7 +271,6 @@ EOF
 		echo -e "\n\n\n************************************************"
 		echo -e "Unninstall completed"
 		echo -e "************************************************\n\n\n"
-		cd /home/pi
 		./moonlight.sh
 	;;
 	0)  exit 1;;
