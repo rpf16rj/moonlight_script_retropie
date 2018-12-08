@@ -2,7 +2,7 @@
 
 echo -e "\n******************************************************"
 echo -e "Bem vindo ao script de instalação do Moonlight para RetroPie"
-echo -e "Versão: 2.0"
+echo -e "Versão: 2.1 - 2018-12-08" 
 echo -e "******************************************************\n"
 echo -e "Este script é uma contribuição para a comunidade."
 echo -e "Este script, além de permitir instalar o moonlight,"
@@ -24,7 +24,7 @@ case $NUM in
 	1) echo -e "\n*******************************************"
 		echo -e "Adding Moonlight to Sources List"
 		echo -e "*******************************************\n"
-		echo "deb http://archive.itimmer.nl/raspbian/moonlight jessie main" >> /etc/apt/sources.list
+		echo "deb http://archive.itimmer.nl/raspbian/moonlight stretch main" >> /etc/apt/sources.list
 		echo -e "\nDONE!!\n"
 
 
